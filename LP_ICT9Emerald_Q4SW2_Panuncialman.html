@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time Converter</title>
+  </head>
+  
+  <style>
+  body{background-color: skyblue;}
+    h1{font-family: serif;
+      color: orange;}
+    p{ font-family: Tahoma;
+    color:orange; }
+
+
+
+  </style>
+ 
+
+  <body>
+
+    <h1><b> 🥶Time Converter🥶 </b></h1>
+    <label><p>From:<p></label>
+    <input type="number" id="inputValue">
+    <select id="fromUnit">
+      <option value="minutes">Minutes</option>
+      <option value="seconds">Seconds</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+    </select>
+    <br>
+    <label><p>To:</p></label>
+    <select id="toUnit">
+      <option value="minutes">Minutes</option>
+      <option value="seconds">Seconds</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+    
+    </select>
+    <br><br>
+    <button onclick="convert()">Convert</button>
+    <br><br>
+    <span id="outputValue"></span>
+    
+    <script>
+      function convert() {
+        const inputValue = document.getElementById("inputValue").value;
+        const fromUnit = document.getElementById("fromUnit").value;
+        const toUnit = document.getElementById("toUnit").value;
+        let outputValue;
+        
+        if (fromUnit === "minutes") {
+          if (toUnit === "minutes") {
+            outputValue = inputValue;
+          } else if (toUnit === "seconds") {
+            outputValue = inputValue * 60;
+          } else if (toUnit === "hours") {
+            outputValue = inputValue / 60
+          } else if (toUnit === "days") {
+            outputValue = inputValue / 1440;
+      
+          }
+        } else if (fromUnit === "seconds") {
+          if (toUnit === "minutes") {
+            outputValue = inputValue / 60;
+          } else if (toUnit === "seconds") {
+            outputValue = inputValue;
+          } else if (toUnit === "hours") {
+            outputValue = inputValue / 3600;
+          } else if (toUnit === "days") {
+            outputValue = inputValue / 86400;
+         
+          }
+        } else if (fromUnit === "hours") {
+          if (toUnit === "minutes") {
+            outputValue = inputValue * 60;
+          } else if (toUnit === "seconds") {
+            outputValue = inputValue * 3600;
+          } else if (toUnit === "hours") {
+            outputValue = inputValue;
+          } else if (toUnit === "days") {
+            outputValue = inputValue / 24;
+          
+          }
+        } else if (fromUnit === "days") {
+          if (toUnit === "minutes") {
+            outputValue = inputValue * 1440;
+          } else if (toUnit === "seconds") {
+            outputValue = inputValue *  86400;
+          } else if (toUnit === "hours") {
+          outputValue = inputValue * 24;
+          } else if (toUnit === "days") {
+          outputValue = inputValue;
+        
+          }
+    }
+    document.getElementById("outputValue").innerHTML = outputValue;
+  }
+</script>
+  </body>
+</html>
